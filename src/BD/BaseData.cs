@@ -50,16 +50,16 @@ namespace DataBase.BD
     {
         public Userobject userobject;
         public Roomobject roomobject;
-
-        public DataBase() 
+        
+        public static void initBD(DataBase dataBase)
         {
             string path = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Path.GetFullPath("Rooms1.json"))))) + "\\BD\\";
-            if (File.Exists(path + "Rooms1.json") && File.Exists(path + "Users.json"))
+            if (File.Exists(path + "Rooms.json") && File.Exists(path + "Users.json"))
             {
-                string roomData = File.ReadAllText(path + "Rooms1.json");
+                string roomData = File.ReadAllText(path + "Rooms.json");
                 string userData = File.ReadAllText(path + "Users.json");
-                userobject = JsonSerializer.Deserialize<Userobject>(userData);
-                roomobject = JsonSerializer.Deserialize<Roomobject>(roomData);
+                dataBase.userobject = JsonSerializer.Deserialize<Userobject>(userData);
+                dataBase.roomobject = JsonSerializer.Deserialize<Roomobject>(roomData);
             }
         }
         public static string GetUserObjectString(Userobject _userobject)
