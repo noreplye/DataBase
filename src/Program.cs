@@ -7,7 +7,7 @@ namespace DataBase
 {
     class Program
     {
-        public static void ServerMessage(string message)
+        public static string ServerMessage(string message)
         {
             const string ip = "127.0.0.1"; //Ip локальный
             const int port = 8080; //Port любой
@@ -34,7 +34,8 @@ namespace DataBase
                 }
                 while (tcpSocket.Available > 0);
 
-                Console.WriteLine(answer.ToString());
+
+                return answer.ToString();
                 break;
             }
         }
@@ -46,7 +47,8 @@ namespace DataBase
 
                 menu.Run();
             string gg = Console.ReadLine();
-            ServerMessage (gg);
+            gg = ServerMessage (gg);
+            Console.WriteLine(gg);
             gg = Console.ReadLine();
             ServerMessage(gg);
             Console.ReadLine();
