@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,6 +33,7 @@ namespace DataBase.BD
 
 
 
+
     public class Userobject
     {
         public User[] users { get; set; }
@@ -43,6 +44,7 @@ namespace DataBase.BD
         public int id { get; set; }
         public string name { get; set; }
         public string email { get; set; }
+        public string number { get; set; }
         public string login { get; set; }
         public string password { get; set; }
         public int admin { get; set; }
@@ -51,11 +53,71 @@ namespace DataBase.BD
     }
 
 
+
     public class DataBase
     {
         public Userobject userobject;
         public Roomobject roomobject;
         public string path;
+
+
+        public static void SortById(DataBase dataBase)//сортировка id(номер комнаты) по возрастанию
+        {
+            List<Room> roomlist = dataBase.roomobject.rooms.ToList();
+            var sortedlist = from p in roomlist
+                             orderby p.id
+                             select p;
+            dataBase.roomobject.rooms = sortedlist.ToArray();
+        }
+
+        public static void SortByIdDescending(DataBase dataBase)//сортировка id(номер комнаты) по убыванию ;)
+        {
+            List<Room> roomlist = dataBase.roomobject.rooms.ToList();
+            var sortedlist = from p in roomlist
+                             orderby p.id descending
+                             select p;
+            dataBase.roomobject.rooms = sortedlist.ToArray();
+        }
+
+        public static void SortBysSeats(DataBase dataBase)//сортировка мест в комнате по возрастанию
+        {
+            List<Room> roomlist = dataBase.roomobject.rooms.ToList();
+            var sortedlist = from p in roomlist
+                             orderby p.seats
+                             select p;
+            dataBase.roomobject.rooms = sortedlist.ToArray();
+        }
+
+        public static void SortBysSeatsDescending(DataBase dataBase)//сортировка мест в комнате по убыванию
+        {
+            List<Room> roomlist = dataBase.roomobject.rooms.ToList();
+            var sortedlist = from p in roomlist
+                             orderby p.seats descending
+                             select p;
+            dataBase.roomobject.rooms = sortedlist.ToArray();
+        }
+
+        public static void SortByPrice(DataBase dataBase)//сортировка цены в комнате по возрастанию
+        {
+            List<Room> roomlist = dataBase.roomobject.rooms.ToList();
+            var sortedlist = from p in roomlist
+                             orderby p.price
+                             select p;
+            dataBase.roomobject.rooms = sortedlist.ToArray();
+        }
+        public static void SortByPriceDescending(DataBase dataBase)//сортировка цены в комнате по убыванию
+        {
+            List<Room> roomlist = dataBase.roomobject.rooms.ToList();
+            var sortedlist = from p in roomlist
+                             orderby p.price descending
+                             select p;
+            dataBase.roomobject.rooms = sortedlist.ToArray();
+        }
+
+
+
+
+
 
         public static DataBase InitBD(string path)//указываем путь к папке   
         {
@@ -72,6 +134,7 @@ namespace DataBase.BD
             }
             return null;
         }
+
         public static DataBase InitBDClient(string roomobject, string userobject)//(не определились в использовании)    принимает аргументы данных о комнатах и пользователях в формате json
         {
             DataBase dataBase = new DataBase();//создаём класс для бдшки
@@ -79,6 +142,7 @@ namespace DataBase.BD
             dataBase.userobject = JsonSerializer.Deserialize<Userobject>(userobject);
             return dataBase;//возвращаем
         }
+
         public static void AddUser(DataBase dataBase, User user)//функция добавления пользователя в базу данных. принимает на вход бд и пользователя
         {
             List<User> users = dataBase.userobject.users.ToList();//делаем из массива список
@@ -175,7 +239,7 @@ namespace DataBase.BD
         {
             var roomsPath = dataBase.path + "Rooms.json";//путь к файлу
             var usersPath = dataBase.path + "Users.json";
-            File.WriteAllText(roomsPath,GetRoomObjectString(dataBase.roomobject));//записывает в файл результат функции (смотри комментарий функции)
+            File.WriteAllText(roomsPath, GetRoomObjectString(dataBase.roomobject));//записывает в файл результат функции (смотри комментарий функции)
             File.WriteAllText(usersPath, GetUserObjectString(dataBase.userobject));
         }
         public static User InitUser(string userData)//функция возвращает класс пользователя. на вход принимает результат функции GetCurrentUserString
