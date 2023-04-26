@@ -13,6 +13,7 @@ namespace DataBase.BD
 
 
 
+
     public class Roomobject
     {
         public Room[] rooms { get; set; }
@@ -23,12 +24,13 @@ namespace DataBase.BD
         public string name { get; set; }
         public string quality { get; set; }
         public string description { get; set; }
-        public int villagerId { get; set; }
         public int status { get; set; }
         public int seats { get; set; }
         public int price { get; set; }
         public int id { get; set; }
     }
+
+
 
 
 
@@ -41,16 +43,15 @@ namespace DataBase.BD
 
     public class User
     {
-        public int id { get; set; }
+        public string id { get; set; }//номер брони
+        public int room_id { get; set; }//номер комнаты
         public string name { get; set; }
         public string email { get; set; }
         public string number { get; set; }
-        public string login { get; set; }
-        public string password { get; set; }
-        public int admin { get; set; }
         public string comeDate { get; set; }
         public string outDate { get; set; }
     }
+
 
 
 
@@ -60,14 +61,14 @@ namespace DataBase.BD
         public Roomobject roomobject;
         public string path;
 
-
-        public static void SortById(DataBase dataBase)//сортировка id(номер комнаты) по возрастанию
+        //функция сортировки
+        public static void SortById(DataBase dataBase)
         {
-            List<Room> roomlist = dataBase.roomobject.rooms.ToList();
-            var sortedlist = from p in roomlist
-                             orderby p.id
+            List<Room> roomlist = dataBase.roomobject.rooms.ToList();//делаем из массива список и сортируем id комнаты по возрастания
+            var sortedlist = from p in roomlist                                     // var локальная переменная
+                             orderby p.id  
                              select p;
-            dataBase.roomobject.rooms = sortedlist.ToArray();
+            dataBase.roomobject.rooms = sortedlist.ToArray();//делаем из списка новый массив   
         }
 
         public static void SortByIdDescending(DataBase dataBase)//сортировка id(номер комнаты) по убыванию ;)
@@ -97,7 +98,7 @@ namespace DataBase.BD
             dataBase.roomobject.rooms = sortedlist.ToArray();
         }
 
-        public static void SortByPrice(DataBase dataBase)//сортировка цены в комнате по возрастанию
+        public static void SortByPrice(DataBase dataBase)//сортировка цены комнаты по возрастанию
         {
             List<Room> roomlist = dataBase.roomobject.rooms.ToList();
             var sortedlist = from p in roomlist
@@ -105,7 +106,7 @@ namespace DataBase.BD
                              select p;
             dataBase.roomobject.rooms = sortedlist.ToArray();
         }
-        public static void SortByPriceDescending(DataBase dataBase)//сортировка цены в комнате по убыванию
+         public static void SortByPriceDescending(DataBase dataBase)//сортировка цены комнаты по убыванию
         {
             List<Room> roomlist = dataBase.roomobject.rooms.ToList();
             var sortedlist = from p in roomlist
@@ -113,10 +114,6 @@ namespace DataBase.BD
                              select p;
             dataBase.roomobject.rooms = sortedlist.ToArray();
         }
-
-
-
-
 
 
         public static DataBase InitBD(string path)//указываем путь к папке   
@@ -149,7 +146,7 @@ namespace DataBase.BD
             users.Add(user);// добавляем в список пользователя
             dataBase.userobject.users = users.ToArray();//делаем из списка новый массив и присваиваем его к массиву который в классе бд
         }
-        public static void RemoveUser(DataBase dataBase, int id)// функция обратная добавлению, удаляет конкретного пользователя по айди (реализация похожая на добавление)
+        public static void RemoveUser(DataBase dataBase, string id)// функция обратная добавлению, удаляет конкретного пользователя по номеру его брони (реализация похожая на добавление)
         {
             for (int i = 0; i < dataBase.userobject.users.Length; i++)
             {
