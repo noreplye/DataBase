@@ -1,4 +1,4 @@
-﻿using DataBase.Interface;
+using DataBase.Interface;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
