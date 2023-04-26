@@ -58,11 +58,12 @@ public class BusinessLogic
         user.number = number;
         user.comeDate = comeDate;
         user.outDate = outDate;
-
         string client = DataBase.BD.DataBase.GetCurrentUserString(user);
-        return null;
+        //Console.WriteLine(user);
+        return client;
     }
     
+   
    
 
     //console.writeline("пришли мне: \n1 - комнаты\n2 - клиентов");

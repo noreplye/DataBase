@@ -11,6 +11,7 @@ namespace DataBase
         
         static void Main(string[] args)
         {
+
             BodyList bodies = new BodyList(10, 5, 40, 125);
             bodies.Draw();
 
@@ -26,8 +27,9 @@ namespace DataBase
                 // Console.WriteLine(gg1);
 
 
+
             }
-            Console.ReadLine();
+
         }
     }   
 }
