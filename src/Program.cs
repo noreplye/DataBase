@@ -11,17 +11,23 @@ namespace DataBase
         
         static void Main(string[] args)
         {
+
+            BodyList bodies = new BodyList(10, 5, 40, 125);
+            bodies.Draw();
+
             while (true)
             {
-                Console.ReadLine();
-                string gg;
-                string client = DataBase.BL.BusinessLogic.Registration("Ñàøà", "mralexgold01@gmail.com", "0", "22.05.2004", "22.05.2023");
-                Console.WriteLine(client);
-                gg = DataBase.BL.BusinessLogic.ServerMessage(3, client);
-                Console.WriteLine(gg);
-                Console.ReadLine();
-                gg = DataBase.BL.BusinessLogic.ServerMessage(4, "4");
-                Console.WriteLine(gg);
+                bodies.Draw();
+                
+                bodies.KeyDetect(Console.ReadKey());
+                
+                // int gg = Convert.ToInt32(Console.ReadLine());
+                // string gg1 = "ÐŸÐ¸Ð·Ð´ÐµÑ†";
+                // gg1 = DataBase.BL.BusinessLogic.ServerMessage(gg, gg1);
+                // Console.WriteLine(gg1);
+
+
+
             }
 
         }
