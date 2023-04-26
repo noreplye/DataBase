@@ -58,24 +58,11 @@ public class BusinessLogic
         user.number = number;
         user.comeDate = comeDate;
         user.outDate = outDate;
-        string client = GetCurrentUserString(user);
-        Console.WriteLine(user);
+
+        string client = DataBase.BD.DataBase.GetCurrentUserString(user);
         return null;
     }
-    public static string GetCurrentUserString(User _user)
-    {
-        if (_user == null)
-        {
-
-        }
-        JsonSerializerOptions options = new JsonSerializerOptions
-        {
-            Encoder = JavaScriptEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic),
-            WriteIndented = true
-        };
-        string userData = JsonSerializer.Serialize<User>(_user, options);
-        return userData;
-    }
+    
    
 
     //console.writeline("пришли мне: \n1 - комнаты\n2 - клиентов");
