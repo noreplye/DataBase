@@ -50,11 +50,12 @@ public class BusinessLogic
         }
     }
 
-    public static string Registration(string name, string email, string id, string comeDate, string outDate)
+    public static string Registration(string name, string email, string number, string comeDate, string outDate)
     {
         User user = new User();
         user.name = name;
         user.email = email;
+        user.number = number;
         user.comeDate = comeDate;
         user.outDate = outDate;
         string client = GetCurrentUserString(user);
