@@ -57,7 +57,7 @@ public class BusinessLogic
         user.email = email;
         user.comeDate = comeDate;
         user.outDate = outDate;
-        string client = DataBase.BD.DataBase.GetCurrentUserString(user);
+        string client = DataBase.BD.DataBase.GetUserString(user);
         Console.WriteLine(user);
         return null;
     }
