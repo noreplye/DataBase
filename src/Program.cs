@@ -2,7 +2,8 @@ using DataBase.Interface;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using DataBase.BL;
+using DataBase.BusinessLogic;
+using DataBase.Interface;
 
 namespace DataBase
 {

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace DataBase.Interface
 {
-    public class Drawing
+    public class Drawing //классик отрисовочки
     {
 
         public static void HorDraw(int x, int y, int width)

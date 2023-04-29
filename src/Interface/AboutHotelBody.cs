@@ -31,15 +31,15 @@ namespace DataBase.Interface
 
         public override void Draw()
         {
-            base.Draw();
+            base.Draw(); // базовая отрисовка всех элементов страницы 
             
-            for (int i = 0; i < Info.Length; i++)
+            for (int i = 0; i < Info.Length; i++) // вывод инфы об отеле 
             {
                 Console.SetCursorPosition(12,10 + i);
                 Console.WriteLine(Info[i]);
             }
 
-            ((Button<FunctionType>)windows[ActiveButton]).
+            ((Button<FunctionType>)windows[ActiveButton]). //передача цвета активной кнопке 
                 text.consoleColor = ActiveColor;
 
         }

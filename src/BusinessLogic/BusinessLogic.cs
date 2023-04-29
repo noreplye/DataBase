@@ -6,9 +6,9 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
 
-namespace DataBase.BL;
-
-public class BusinessLogic
+namespace DataBase.BusinessLogic
+{
+    public class BusinessLogic
 {
     public static string ServerMessage(int choice, string message)
     {
@@ -79,3 +79,5 @@ public class BusinessLogic
     //    }
     //} while ((choose != "1") || (choose != "2")); 
 }
+}
+

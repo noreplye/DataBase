@@ -1,6 +1,6 @@
 ﻿namespace DataBase.Interface
 {
-    public class Button<Function> : View   
+    public class Button<Function> : View   // класс кнопки 
     {
         public Names text;
         public Function func;
