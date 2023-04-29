@@ -10,7 +10,7 @@ namespace DataBase.Interface
         public BodyList(int x, int y, int height, int width):base(x, y, height, width)
         {
             bodies = new List<Body>();
-            bodies.Add(new WelcomeBody( x, y, height, width )); // проверить нужно на работу потом 
+            bodies.Add(new WelcomeBody( x, y, height, width )); // добавление боди
             ActiveBody = 0;
         }
 

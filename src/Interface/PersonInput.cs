@@ -1,17 +1,19 @@
-﻿namespace DataBase.Interface
+﻿using System;
+namespace DataBase.Interface
 {
     public class PersonInput
 
     {
-    public string FullName;
-    public string InDate;
-    public string OutDate;
+        public string fullName;
+        public string comeDate;
+        public string outDate;
 
-    public PersonInput(string FullName, string InDate, string OutDate)
+        //public static PersonInput( string FullName,  string InDate, string OutDate)
+        public PersonInput( string fullName,  string comeDate, string outDate)
         {
-            this.FullName = FullName;
-            this.InDate = InDate;
-            this.OutDate = OutDate;
+            this.fullName = fullName;
+            this.comeDate = comeDate;
+            this.outDate = outDate;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace DataBase.Interface
 {
-    public class View
+    public class View // 
     {
         public int x;
         public int y;
@@ -16,7 +16,7 @@ namespace DataBase.Interface
             this.width = width;
         }
         
-        public void DrawFrame()
+        public void DrawFrame() //отрисовка рамок
         {
             Console.SetCursorPosition(x,y);
             Drawing.HorDraw(x, y, width);
@@ -25,7 +25,7 @@ namespace DataBase.Interface
             Drawing.VertDraw(x, y , height);
             Drawing.VertDraw(x + width, y , height);
         }
-        virtual public void Draw() {}
+        virtual public void Draw() {} //перезаписываемая функция отрисовки для каждого объекта 
 
     }
 }

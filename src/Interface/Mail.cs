@@ -13,7 +13,7 @@ namespace DataBase.Interface
         {
             try
             {
-                MailAddress m = new MailAddress(text);
+                MailAddress m  = new MailAddress(text);
 
                 return true;
             }

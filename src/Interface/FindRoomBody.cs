@@ -2,7 +2,7 @@
 {
     using FunctionType = Func<List<Body>, List<Body>>;
     
-    public class FindRoomBody : Body  //класс вкладки "Найти номер"
+    public class FindRoomBody : Body  //класс вкладки "Найти номер" (короче ее не делаем) 
     {
         public FindRoomBody(int x, int y, int height, int width) : base(x, y, height, width, "Найти номер")
         {
