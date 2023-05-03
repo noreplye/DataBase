@@ -4,10 +4,8 @@
     
     public class LivingBody : Body  // класс вкладки "Проживание" доделать 
     {
-        // private string room1;
-        // private string room2;
-        // private string room3;
-        
+
+
         public LivingBody(int x, int y, int height, int width):base(x, y, height, width, "Проживание")
         {
             windows.Add(new Button<FunctionType>("Назад", x + 5, y + 35, 2, 20, (List<Body> list) =>
@@ -47,8 +45,11 @@
                     return list;
                 }
             ));
-            
 
+            
+            windows.Add(new Names(x + 10, y + 11, client.DataBase.InitRoom(client.BusinessLogic.ServerMessage(1, "1")).name));
+            windows.Add(new Names(x + 10, y + 21, client.DataBase.InitRoom(client.BusinessLogic.ServerMessage(1, "2")).name));
+            windows.Add(new Names(x + 10, y + 31, client.DataBase.InitRoom(client.BusinessLogic.ServerMessage(1, "3")).name));
 
         }
         
