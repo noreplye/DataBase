@@ -1,23 +1,26 @@
 using DataBase.Interface;
+using System.Data;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
-using DataBase.BusinessLogic;
-using DataBase.Interface;
 
-namespace DataBase
+namespace client
 {
     class Program
     {
         
         static void Main(string[] args)
         {
-
+            
+            
             BodyList bodies = new BodyList(10, 5, 40, 125);
-            bodies.Draw();
-
+            //bodies.Draw();
+            User petr = new User();
+            Console.WriteLine(BusinessLogic.ServerMessage(3, DataBase.GetUserString(petr)));
             while (true)
             {
+
+
                 bodies.Draw();
                 
                 bodies.KeyDetect(Console.ReadKey());
@@ -30,6 +33,7 @@ namespace DataBase
 
 
             }
+            
 
         }
     }   
