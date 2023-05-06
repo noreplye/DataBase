@@ -9,6 +9,18 @@
             text = " ";
         }
         
+        public void AddSymbol(char symbol)
+        {
+            text += symbol;
+        }
+
+        public void DelSymbol()
+        {
+            if (text.Length != 0)
+            {
+                text = text.Remove(text.Length - 1);
+            }
+        }
         public override void Draw()
         {
             DrawFrame();

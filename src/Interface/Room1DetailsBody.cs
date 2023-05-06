@@ -1,4 +1,7 @@
-﻿namespace DataBase.Interface
+﻿using System.ComponentModel;
+using client;
+
+namespace DataBase.Interface
 {
     using FunctionType = Func<List<Body>, List<Body>>;
 
@@ -18,7 +21,7 @@
 
             windows.Add(new Button<FunctionType>("Забронировать", x + 100, y + 35, 2, 20, (List<Body> list) =>
                 {
-                    
+                    list.Clear();
                     list.Add(new BookAuthBody( x, y, height, width, 1));
                     return list;
                 }
@@ -29,14 +32,13 @@
             windows.Add(new Names(x + 10, y + 14, "Цена комнаты: " + client.DataBase.InitRoom(client.BusinessLogic.ServerMessage(1, "1")).price));
         }
 
-        public override void  Draw()
+        public override void Draw()
         {
             base.Draw();
-            
-            ((Button<FunctionType>)windows[ActiveButton]).
-                text.consoleColor = ActiveColor;
-            
+            ((Button<FunctionType>)windows[ActiveButton]).text.consoleColor = ActiveColor;
+
         }
     }
+    
 }
 
