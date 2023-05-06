@@ -7,7 +7,7 @@
         
         public Button(string text, int x, int y, int height, int width, Function func):base(x, y, height, width)
         {
-            this.text = new Names(x + 5, y + 1, text);
+            this.text = new Names(x + 2, y + 1, text);
             this.func = func;
             
         }

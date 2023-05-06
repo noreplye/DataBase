@@ -22,21 +22,9 @@ namespace DataBase.Interface
             ActiveColor = ConsoleColor.Magenta;
         }
 
-        public List<Body> KeyDetect(ConsoleKeyInfo keyInfo, List<Body> bodies) // функция переключения кнопок, дочерние классы от бодика ее наследуют 
+        virtual public List<Body> KeyDetect(ConsoleKeyInfo keyInfo, List<Body> bodies) 
         {
-
-            if (!KeyPressed)
-            {
-                if(keyInfo.Key == ConsoleKey.Tab) 
-                {
-                    ((Button<FunctionType>)windows[ActiveButton]).text.consoleColor = ConsoleColor.White;
-                    ActiveButton = (ActiveButton + 1) % windows.Count;
-                }
-                if (keyInfo.Key == ConsoleKey.Enter)
-                {
-                    ((Button<FunctionType>)windows[ActiveButton]).func(bodies);
-                }
-            }
+            
             if (keyInfo.Key == ConsoleKey.Escape) 
             {
                 bodies.Remove(this);
