@@ -19,6 +19,7 @@ namespace DataBase.Interface
 
             windows.Add(new Button<FunctionType>("Проживание", x + 70, y + 10, 2, 20, (List<Body> list) =>
                 {
+                    list.Clear();
                     list.Add(new LivingBody(x, y, height, width));
                     return list;
                 }
