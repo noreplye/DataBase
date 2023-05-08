@@ -26,6 +26,15 @@ namespace DataBase.Interface
 
             ));
             
+            windows.Add(new Button<FunctionType>("Мои брони", x + 50, y + 15, 2, 20, (List<Body> list) =>
+                {
+                    list.Clear();
+                    list.Add(new MyBronesBody(x, y, height, width));
+                    return list;
+                }
+
+            ));
+            
             
             //забейте на нее короче
             
