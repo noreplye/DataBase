@@ -1,34 +1,39 @@
 ﻿namespace DataBase.Interface
 {
+    using client;
+    using System.Xml.Serialization;
     using FunctionType = Func<List<Body>, List<Body>>;
     
     public class AuthBody : Body
     {
         public AuthBody(int x, int y, int height, int width) : base(x, y, height, width, "Degenerate Hotel: Авторизация")
         {
-              string email = "E-mail:";
+              string email = "Логин, E-mail или номер телефона:";
 
-            windows.Add(new InputSpace(x + width/4 - 3, y + 12, 50, email, 1));
+            windows.Add(new InputSpace(x + width/4 - 29, y + 12, 50, email, 1));
 
             string password = "Пароль:";
 
             windows.Add(new InputSpace(x + width/4 - 3, y + 15, 50, password, 2));
 
             string signIn = "Войти";
-
-            windows.Add(new Button<FunctionType>(signIn, x + width/3 - 1, y + 18, 2, 22, (List<Body> list) =>
+            
+            windows.Add(new Button<FunctionType>(signIn, x + width / 3 - 1, y + 18, 2, 22, (List<Body> list) =>
                 {
-                    // if (DataBase.CheckPerson(((InputSpace)windows[0]).Text(),
-                    //     ((InputSpace)windows[1]).Text()))
-                    // {
-                    //     list.Clear();
-                    //     list.Add(new WelcomeBody(0, 0, 40, 20));
-                    // }
-                    // else
-                    // {
-                    //     ((InputSpace)windows[0]).field.consoleColor = ConsoleColor.Red;
-                    // }
-                    //
+                    var first = ((InputSpace)windows[0]).input.text.TrimStart();
+                    var second = ((InputSpace)windows[1]).input.text.TrimStart();
+                    string checker = BusinessLogic.CheckValid("", ((InputSpace)windows[0]).input.text, ((InputSpace)windows[1]).input.text, ((InputSpace)windows[0]).input.text, ((InputSpace)windows[0]).input.text);
+                    if (!(checker.Contains("e")&& checker.Contains("n") && checker.Contains("l"))&&(!checker.Contains("p")))
+                    {
+                        if (BusinessLogic.Login(first, second) != "wrong")
+                        {
+                            list.Clear();
+                            list.Add(new WelcomeBody(x, y, height, width));
+                        }
+                            
+                    }
+
+
                     return list;
                 }
             ));

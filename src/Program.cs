@@ -15,8 +15,7 @@ namespace client
             
             BodyList bodies = new BodyList(10, 5, 40, 125);
             //bodies.Draw();
-            User petr = new User();
-            Console.WriteLine(BusinessLogic.ServerMessage(3, DataBase.GetUserString(petr)));
+            //Environment.Exit(0);
             while (true)
             {
 
