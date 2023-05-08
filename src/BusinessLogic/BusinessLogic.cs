@@ -104,17 +104,20 @@ namespace client
             }
         }
 
-        public static string Registration(string name, string email, string number, string comeDate, string outDate)
+        public static string Registration(string name, string login,string password, string number, string email)
         {
             User user = new User();
             user.name = name;
-            user.email = email;
+            user.login = login;
+            user.password = password;
             user.number = number;
-            user.comeDate = comeDate;
-            user.outDate = outDate;
+            user.email = email;
+            user.bookingCount = 0;
+
             string client = DataBase.GetUserString(user);
-            //Console.WriteLine(user);
-            return client;
+            //Console.WriteLine(client);
+            return ServerMessage(5, client);
+
         }
     }
 }
