@@ -19,7 +19,7 @@ namespace DataBase.Interface
 
             windows.Add(new Button<FunctionType>("Проживание", x + 70, y + 10, 2, 20, (List<Body> list) =>
                 {
-                    
+                    list.Clear();
                     list.Add(new LivingBody(x, y, height, width));
                     return list;
                 }
@@ -28,18 +28,41 @@ namespace DataBase.Interface
             
             windows.Add(new Button<FunctionType>("Мои брони", x + 50, y + 15, 2, 20, (List<Body> list) =>
                 {
-                    
+                    list.Clear();
                     list.Add(new MyBronesBody(x, y, height, width));
                     return list;
                 }
 
             ));
             
-            
+        }
 
-            
-        }      
+        public override List<Body> KeyDetect(ConsoleKeyInfo keyInfo, List<Body> bodies)
+        {
+            KeyPressed = false;
+            bodies = base.KeyDetect(keyInfo, bodies);
         
+            if (!KeyPressed)
+            {
+                if (keyInfo.Key == ConsoleKey.Tab)
+                {
+                    if (ActiveButton < 4)
+                    {
+                        ((Button<FunctionType>)windows[ActiveButton]).text.consoleColor = ConsoleColor.White;
+                    }
+        
+                    ActiveButton = (ActiveButton + 1) % windows.Count;
+                }
+                else if (keyInfo.Key == ConsoleKey.Enter)
+                {
+                    if (ActiveButton < 4)
+                    {
+                        ((Button<FunctionType>)windows[ActiveButton]).func(bodies);
+                    }
+                }
+            }
+            return bodies;
+        }
 
         public override void Draw()
         {
