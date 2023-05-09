@@ -104,17 +104,63 @@ namespace client
             }
         }
 
-        public static string Registration(string name, string email, string number, string comeDate, string outDate)
+        public static string Registration(string name, string login,string password, string number, string email)
         {
             User user = new User();
             user.name = name;
-            user.email = email;
+            user.login = login;
+            user.password = password;
             user.number = number;
-            user.comeDate = comeDate;
-            user.outDate = outDate;
+            user.email = email;
+            user.bookingCount = 0;
+
             string client = DataBase.GetUserString(user);
-            //Console.WriteLine(user);
-            return client;
+            //Console.WriteLine(client);
+            return ServerMessage(5, client);
+
+        }
+
+        public static string Login(string nameLoginNumber, string password)
+        {
+            return ServerMessage(6, nameLoginNumber+"'"+password);
+        }
+
+        public static string CheckValid(string name,string login, string password, string number, string email)
+        {
+            var result="";
+            if (login.Length < 4)
+            {
+                result += "l";
+            }
+            if (password.Length < 8)
+            {
+                result += "p";
+            }
+            if (number.Length == 12)
+            {
+                if (number[0] != '+' || number[1]!='7')
+                {
+                
+                    result += "n";
+                }
+            }
+            if (number.Length == 11)
+            {
+                if (number[0] != '8')
+                {
+                    result += "n";
+                }
+            }
+            if (number.Length < 11 || number.Length > 12)
+            {
+                result += "n";
+            }
+            if (!(email.Contains('@')&&(email.Contains(".com")|| email.Contains(".ru")) && email[0] != '@' && email.Length >= 5))
+            {
+                result+= "e";
+            }
+
+            return result;
         }
     }
 }

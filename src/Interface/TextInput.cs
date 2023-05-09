@@ -16,7 +16,7 @@
 
         public void DelSymbol()
         {
-            if (text.Length != 0)
+            if (text.Length >= 1)
             {
                 text = text.Remove(text.Length - 1);
             }
@@ -24,12 +24,12 @@
         public override void Draw()
         {
             DrawFrame();
-            Console.SetCursorPosition(x + 1, y + 1);
+            Console.SetCursorPosition(x+1, y + 1);
             Console.Write(text);
         }
         public virtual bool Validation()
         {
-            return text.Length != 0;
+            return text.TrimStart().Length != 0;
         }
     }
 }

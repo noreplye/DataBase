@@ -19,7 +19,7 @@ namespace DataBase.Interface
 
             windows.Add(new Button<FunctionType>("Проживание", x + 70, y + 10, 2, 20, (List<Body> list) =>
                 {
-                    list.Clear();
+                    
                     list.Add(new LivingBody(x, y, height, width));
                     return list;
                 }
@@ -28,7 +28,7 @@ namespace DataBase.Interface
             
             windows.Add(new Button<FunctionType>("Мои брони", x + 50, y + 15, 2, 20, (List<Body> list) =>
                 {
-                    list.Clear();
+                    
                     list.Add(new MyBronesBody(x, y, height, width));
                     return list;
                 }
@@ -36,25 +36,9 @@ namespace DataBase.Interface
             ));
             
             
-            //забейте на нее короче
+
             
-            //переделать эту штуку нормально(не надо) 
-            // windows.Add(new FindRoom<FunctionType>( "Найти номер", x + 8, y+20, 4, 109, (List<Body> list) =>
-            //     {
-            //         list.Add(new FindRoomBody(x, y, height, width));
-            //         return list;
-            //     }
-            //
-            // ));
-            // windows.Add(new Button<FunctionType>( "Найти номер", x + 8, y+20, 4, 109, (List<Body> list) =>
-            //     {
-            //         list.Add(new FindRoomBody(x, y, height, width));
-            //         return list;
-            //     }
-            //
-            // ));
-            
-        }     //ВМЕсто нее можно рисунок смешной сделать 
+        }      
         
 
         public override void Draw()
