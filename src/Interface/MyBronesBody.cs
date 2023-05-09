@@ -23,5 +23,14 @@
             
         }
         
+        public override void Draw()
+        {
+            base.Draw();
+            
+            ((Button<FunctionType>)windows[ActiveButton]).text.consoleColor = ActiveColor;
+            
+
+        } 
+        
     }
 }
