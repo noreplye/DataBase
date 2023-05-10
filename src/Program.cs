@@ -11,6 +11,23 @@ namespace DataBase
         
         static void Main(string[] args)
         {
+            string client = DataBase.BL.BusinessLogic.Registration("Саша", "mralexgold01@gmail.com", "0", "22.05.2004", "22.05.2023");
+            while (true)
+            {
+                Console.ReadLine();
+                string gg;
+               
+                Console.WriteLine(client);
+                gg = DataBase.BL.BusinessLogic.ServerMessage(3, client);
+                Console.WriteLine("user id: ",gg);
+                int a = Convert.ToInt32(Console.ReadLine());
+                gg = DataBase.BL.BusinessLogic.ServerMessage(a, "nothing");
+                Console.ReadLine();
+                gg = DataBase.BL.BusinessLogic.ServerMessage(4, "4");
+                Console.WriteLine(gg);
+            }
+
+
 
             BodyList bodies = new BodyList(10, 5, 40, 125);
             bodies.Draw();
