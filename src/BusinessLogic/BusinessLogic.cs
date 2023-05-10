@@ -175,7 +175,20 @@ namespace client
             return DataBase.InitRoom(ServerMessage(1, room_number));
         }
         public static string Book(string user_id,string roomType,string comeDate, string outDate)
-        {   comeDate= comeDate.Trim(); outDate= outDate.Trim();
+        {
+            if (comeDate.Length == 0 && comeDate.Length == 0)
+            {
+                return "ExceptionDate";
+            }
+            if (comeDate.Trim() == null && comeDate.Trim() == null)
+            {
+                return "ExceptionDate";
+            }
+            comeDate = comeDate.Trim(); outDate= outDate.Trim();
+            if (comeDate.Length < 10)
+            {
+                return "ExceptionDate";
+            }
             var toCheck1 = (comeDate[2] == '/' && comeDate[5] == '/');
             try
             {
