@@ -1,4 +1,5 @@
 using DataBase.Interface;
+using Microsoft.VisualBasic;
 using System.Data;
 using System.Net;
 using System.Net.Sockets;
@@ -12,10 +13,10 @@ namespace client
         static void Main(string[] args)
         {
             
-            
             BodyList bodies = new BodyList(10, 5, 40, 125);
+
             //bodies.Draw();
-            //Environment.Exit(0);
+            //Bookingobject us1 = BusinessLogic.GetBookings("1");
             while (true)
             {
 

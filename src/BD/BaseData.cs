@@ -401,5 +401,10 @@ namespace client
             string bookingData = JsonSerializer.Serialize<Booking>(_booking, options);
             return bookingData;
         }
+        public static Bookingobject InitBookings(string BookingsData)
+        {
+            
+            return JsonSerializer.Deserialize<Bookingobject>(BookingsData);
+        }
     }
 }

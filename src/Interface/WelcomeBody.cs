@@ -7,12 +7,15 @@ namespace DataBase.Interface
     
     public class WelcomeBody : Body  // класс главной встречающей страницы
     {
+        public string user_id;
         public WelcomeBody(int x, int y, int height, int width) : base(x, y, height, width, "Degenerate Hotel")
         {
             windows.Add(new Button<FunctionType>("Об отеле", x + 30, y + 10, 2, 20, (List<Body> list) =>
                 {
                     list.Clear();
-                    list.Add(new AboutHotelBody(x, y, height, width));
+                    var newWindow = new AboutHotelBody(x, y, height, width);
+                    newWindow.user_id = user_id;
+                    list.Add(newWindow);
                     return list;
                 }
             ));
@@ -20,7 +23,9 @@ namespace DataBase.Interface
             windows.Add(new Button<FunctionType>("Проживание", x + 70, y + 10, 2, 20, (List<Body> list) =>
                 {
                     list.Clear();
-                    list.Add(new LivingBody(x, y, height, width));
+                    var newWindow = new LivingBody(x, y, height, width);
+                    newWindow.user_id = user_id;
+                    list.Add(newWindow);
                     return list;
                 }
 
@@ -29,7 +34,8 @@ namespace DataBase.Interface
             windows.Add(new Button<FunctionType>("Мои брони", x + 50, y + 15, 2, 20, (List<Body> list) =>
                 {
                     list.Clear();
-                    list.Add(new MyBronesBody(x, y, height, width));
+                    var newWindow = new MyBronesBody(x, y, height, width,user_id);
+                    list.Add(newWindow);
                     return list;
                 }
 
@@ -46,7 +52,7 @@ namespace DataBase.Interface
             {
                 if (keyInfo.Key == ConsoleKey.Tab)
                 {
-                    if (ActiveButton < 4)
+                    if (ActiveButton < 3)
                     {
                         ((Button<FunctionType>)windows[ActiveButton]).text.consoleColor = ConsoleColor.White;
                     }
@@ -55,7 +61,7 @@ namespace DataBase.Interface
                 }
                 else if (keyInfo.Key == ConsoleKey.Enter)
                 {
-                    if (ActiveButton < 4)
+                    if (ActiveButton < 3)
                     {
                         ((Button<FunctionType>)windows[ActiveButton]).func(bodies);
                     }

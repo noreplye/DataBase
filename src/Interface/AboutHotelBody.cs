@@ -8,12 +8,15 @@ namespace DataBase.Interface
     public class AboutHotelBody : Body // класс раздела "об отеле" из верхнего меню
     {
         public string[] Info;
+        public string user_id;
         public AboutHotelBody(int x, int y, int height, int width) : base(x, y, height, width, "Degenerate Hotel")
         { 
             windows.Add(new Button<FunctionType>("Назад", x + 5, y + 35, 2, 20, (List<Body> list) =>
                 {
                     list.Clear();
-                    list.Add(new WelcomeBody(x,y,height,width));
+                    var newWindow = new WelcomeBody(x, y, height, width);
+                    newWindow.user_id = user_id;
+                    list.Add(newWindow);
                     return list;
                 }
             ));

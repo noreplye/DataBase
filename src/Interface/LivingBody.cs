@@ -4,14 +4,16 @@
     
     public class LivingBody : Body  // класс вкладки "Проживание" доделать 
     {
-
+        public string user_id;
 
         public LivingBody(int x, int y, int height, int width):base(x, y, height, width, "Проживание")
         {
             windows.Add(new Button<FunctionType>("Назад", x + 5, y + 35, 2, 20, (List<Body> list) =>
                 {
                     list.Clear();
-                    list.Add(new WelcomeBody(x,y,height,width));
+                    var newWindow = new WelcomeBody(x, y, height, width);
+                    newWindow.user_id = user_id;
+                    list.Add(newWindow);
                     return list;
                 }
             ));
@@ -21,7 +23,9 @@
             windows.Add(new Button<FunctionType>("Подробнее", x + 100, y + 10, 2, 15, (List<Body> list) =>
                 {
                     list.Clear();
-                    list.Add(new Room1DetailsBody(x, y, height, width));
+                    var newWindow = new Room1DetailsBody(x, y, height, width);
+                    newWindow.user_id = user_id;
+                    list.Add(newWindow);
                     return list;
                 }
             ));
@@ -32,7 +36,9 @@
             windows.Add(new Button<FunctionType>("Подробнее", x + 100, y + 20, 2, 15, (List<Body> list) =>
                 {
                     list.Clear();
-                    list.Add(new Room2DetailsBody(x, y, height, width));
+                    var newWindow = new Room2DetailsBody(x, y, height, width);
+                    newWindow.user_id = user_id;
+                    list.Add(newWindow);
                     return list;
                 }
             ));
@@ -42,8 +48,9 @@
             
             windows.Add(new Button<FunctionType>("Подробнее", x + 100, y + 30, 2, 15, (List<Body> list) =>
                 {
-                    list.Clear();
-                    list.Add(new Room3DetailsBody(x, y, height, width));
+                    var newWindow = new Room3DetailsBody(x, y, height, width);
+                    newWindow.user_id = user_id;
+                    list.Add(newWindow);
                     return list;
                 }
             ));
@@ -65,11 +72,18 @@
                 if (keyInfo.Key == ConsoleKey.Tab)
                 {
                     if (ActiveButton < 4)
-                    {
+                    {   
+                        
                         ((Button<FunctionType>)windows[ActiveButton]).text.consoleColor = ConsoleColor.White;
+                        
                     }
         
                     ActiveButton = (ActiveButton + 1) % windows.Count;
+                    if (ActiveButton == 4)
+                    {
+
+                        ActiveButton = 0;
+                    }
                 }
                 else if (keyInfo.Key == ConsoleKey.Enter)
                 {

@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
+using System.Linq;
 
 namespace client
 {
@@ -98,6 +99,7 @@ namespace client
                         {
                             tcpSocket.Close();
                         }
+                        tcpSocket.Close();
                         return answer.ToString();
                     }
                 }    
@@ -161,6 +163,59 @@ namespace client
             }
 
             return result;
+        }
+        public static Bookingobject GetBookings(string user_id)
+        {
+            var fromServer = ServerMessage(7, user_id);
+            Bookingobject result = DataBase.InitBookings(fromServer);
+            return result;
+        }
+        public static Room GetRoomType(string room_number)
+        {
+            return DataBase.InitRoom(ServerMessage(1, room_number));
+        }
+        public static string Book(string user_id,string roomType,string comeDate, string outDate)
+        {   comeDate= comeDate.Trim(); outDate= outDate.Trim();
+            var toCheck1 = (comeDate[2] == '/' && comeDate[5] == '/');
+            try
+            {
+                DateTime ki = DateTime.Parse(comeDate);
+            }
+            catch (Exception)
+            {
+                return "ExceptionDate";
+            }
+            try
+            {
+                DateTime ki = DateTime.Parse(outDate);
+            }
+            catch (Exception)
+            {
+                return "ExceptionDate";
+            }
+            if (toCheck1)
+            {
+                DateTime checkData1 = DateTime.Parse(comeDate);
+                DateTime checkData2 = DateTime.Parse(outDate);
+                if ((checkData2 - checkData1).Days <= 30)
+                {   
+                    if(checkData2 > checkData1)
+                    {
+                        var result = ServerMessage(4, user_id + "'" + roomType + "'" + comeDate + "'" + outDate);
+                        return result;
+                    }
+                    return "after";
+                }
+                return "totalDays"; 
+
+            }
+            return "ExceptionDate";
+
+
+        }
+        public static string DeleteBooking(string booking_id)
+        {
+            return ServerMessage(8, booking_id);
         }
     }
 }

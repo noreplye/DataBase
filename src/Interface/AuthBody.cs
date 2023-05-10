@@ -25,10 +25,13 @@
                     string checker = BusinessLogic.CheckValid("", ((InputSpace)windows[0]).input.text, ((InputSpace)windows[1]).input.text, ((InputSpace)windows[0]).input.text, ((InputSpace)windows[0]).input.text);
                     if (!(checker.Contains("e")&& checker.Contains("n") && checker.Contains("l"))&&(!checker.Contains("p")))
                     {
-                        if (BusinessLogic.Login(first, second) != "wrong")
+                        var tryLogin = BusinessLogic.Login(first, second);
+                        if (tryLogin != "wrong")
                         {
                             list.Clear();
-                            list.Add(new WelcomeBody(x, y, height, width));
+                            var newWindow = new WelcomeBody(x, y, height, width);
+                            newWindow.user_id = tryLogin;
+                            list.Add(newWindow);
                         }
                             
                     }
