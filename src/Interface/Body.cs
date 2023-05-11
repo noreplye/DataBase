@@ -19,7 +19,7 @@ namespace DataBase.Interface
 
             ActiveButton = 0;
             KeyPressed = false;
-            ActiveColor = ConsoleColor.Magenta;
+            ActiveColor = ConsoleColor.Green;
         }
 
         virtual public List<Body> KeyDetect(ConsoleKeyInfo keyInfo, List<Body> bodies) 

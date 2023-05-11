@@ -14,7 +14,6 @@ namespace client
         {
             
             BodyList bodies = new BodyList(10, 5, 40, 125);
-
             //bodies.Draw();
             //Bookingobject us1 = BusinessLogic.GetBookings("1");
             while (true)

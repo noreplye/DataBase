@@ -60,7 +60,7 @@ namespace DataBase.Interface
                         Console.SetCursorPosition(x + 30, y + 30);
                         Console.WriteLine("Вы успешно забронировали номер в отеле, для просмотра перейдите в пункт мои брони");
                         Console.SetCursorPosition(x + 30, y + 31);
-                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Enter - OK");
                         Console.ForegroundColor = ConsoleColor.White;
                         while (!(Console.ReadKey().Key == ConsoleKey.Enter)) ;
@@ -90,7 +90,7 @@ namespace DataBase.Interface
                         Console.SetCursorPosition(x + 30, y + 30);
                         Console.WriteLine("Вы превысили максимальное количество возможных броней");
                         Console.SetCursorPosition(x + 30, y + 31);
-                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Enter - OK");
                         Console.ForegroundColor = ConsoleColor.White;
                         while (!(Console.ReadKey().Key == ConsoleKey.Enter)) ;
@@ -100,7 +100,7 @@ namespace DataBase.Interface
                         Console.SetCursorPosition(x + 30, y + 30);
                         Console.WriteLine("На эту дату не осталось свободных номеров");
                         Console.SetCursorPosition(x + 30, y + 31);
-                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Enter - OK");
                         Console.ForegroundColor = ConsoleColor.White;
                         while (!(Console.ReadKey().Key == ConsoleKey.Enter)) ;
@@ -110,9 +110,11 @@ namespace DataBase.Interface
                         Console.SetCursorPosition(x + 30, y + 30);
                         Console.WriteLine("Вы неправильно ввели дату. Формат ДД/ММ/ГГГГ");
                         Console.SetCursorPosition(x + 30, y + 31);
-                        Console.WriteLine("Пример : 15/10/2010");
+                        Console.WriteLine("Пример : 15/05/2023");
                         Console.SetCursorPosition(x + 30, y + 32);
-                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.WriteLine("Забронировать можно только на ближайшие 30 дней");
+                        Console.SetCursorPosition(x + 30, y + 33);
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Enter - OK");
                         Console.ForegroundColor = ConsoleColor.White;
                         while (!(Console.ReadKey().Key == ConsoleKey.Enter)) ;
@@ -122,7 +124,7 @@ namespace DataBase.Interface
                         Console.SetCursorPosition(x + 30, y + 30);
                         Console.WriteLine("Вы превысили максимальное число дней для бронирования. Максимум 30 дней.");
                         Console.SetCursorPosition(x + 30, y + 31);
-                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Enter - OK");
                         Console.ForegroundColor = ConsoleColor.White;
                         while (!(Console.ReadKey().Key == ConsoleKey.Enter)) ;
@@ -133,7 +135,7 @@ namespace DataBase.Interface
                         Console.SetCursorPosition(x + 30, y + 30);
                         Console.WriteLine("Дата выезда должна быть после даты вьезда.");
                         Console.SetCursorPosition(x + 30, y + 31);
-                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Enter - OK");
                         Console.ForegroundColor = ConsoleColor.White;
                         while (!(Console.ReadKey().Key == ConsoleKey.Enter)) ;

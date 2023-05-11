@@ -98,7 +98,7 @@
                             check = false;
                         }
                         Console.SetCursorPosition(x + width / 2 - 10, y + 33);
-                        Console.ForegroundColor = ConsoleColor.Magenta;
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Enter - OK");
                         Console.ForegroundColor = ConsoleColor.White;
                         while(!(Console.ReadKey().Key==ConsoleKey.Enter));

@@ -210,12 +210,20 @@ namespace client
             {
                 DateTime checkData1 = DateTime.Parse(comeDate);
                 DateTime checkData2 = DateTime.Parse(outDate);
+                if ((DateTime.Now - checkData2).TotalDays > 30)
+                {
+                    return "ExceptionDate";
+                }
+
                 if ((checkData2 - checkData1).Days <= 30)
                 {   
                     if(checkData2 > checkData1)
                     {
-                        var result = ServerMessage(4, user_id + "'" + roomType + "'" + comeDate + "'" + outDate);
-                        return result;
+                        
+                            var result = ServerMessage(4, user_id + "'" + roomType + "'" + comeDate + "'" + outDate);
+                            return result;
+
+
                     }
                     return "after";
                 }
