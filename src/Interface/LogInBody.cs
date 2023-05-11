@@ -109,23 +109,15 @@
                             list.Clear();
                             list.Add(new AuthBody(x, y, height, width));
                             return list;
-                        // if (!DataBase.AddUser(((InputSpace)windows[0]).input.text,
-                        //     ((InputSpace)windows[1]).input.text,
-                        //     ((InputSpace)windows[2]).input.text))
-                        // {
-                        //     ((InputSpace)windows[1]).field.consoleColor = ConsoleColor.Red;
-                        // }
-                        // else
-                        // {
-                        //     list.Clear();
-                        //     list.Add(new WelcomeBody(x, y, height, width));
-                        //
 
                     }    
 
                 return list;
                 }
             ));
+            windows.Add((new Names(x + width -36, y + 22,"Длина пароля не меньше 8 символов")));
+            windows.Add((new Names(x + width -36, y + 13,"Длина логина не менее 4 символов")));
+            windows.Add((new Names(x + width -36, y + 16,"Начинается с +7 или 8")));
         }
         
 
@@ -144,6 +136,10 @@
                     }
 
                     ActiveButton = (ActiveButton + 1) % windows.Count;
+                    if (ActiveButton > 7)
+                    {
+                        ActiveButton = 0;
+                    }
                 }
                 else if (keyInfo.Key == ConsoleKey.Enter)
                 {

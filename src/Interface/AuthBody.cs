@@ -33,8 +33,20 @@
                             newWindow.user_id = tryLogin;
                             list.Add(newWindow);
                         }
+                        else
+                        {
+                            ((InputSpace)windows[0]).field.consoleColor = ConsoleColor.Red;
+                            ((InputSpace)windows[1]).field.consoleColor = ConsoleColor.Red;
+                        }
                             
                     }
+                    else
+                    {
+                        ((InputSpace)windows[0]).field.consoleColor = ConsoleColor.Red;
+                        ((InputSpace)windows[1]).field.consoleColor = ConsoleColor.Red;
+                    }
+                    
+                    
 
 
                     return list;
